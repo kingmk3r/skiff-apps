@@ -334,63 +334,133 @@
     </div>
     
     <script>
-        // Add some basic interactivity
-        document.querySelectorAll('.email-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove active class from all items
-                document.querySelectorAll('.email-item').forEach(i => i.classList.remove('active'));
-                // Add active class to clicked item
-                this.classList.add('active');
-                
-                // Simulate email content loading
-                const emailView = document.querySelector('.email-view');
-                const from = this.querySelector('.email-from').textContent.trim().split('\n')[0];
-                const subject = this.querySelector('.email-subject').textContent;
-                const preview = this.querySelector('.email-preview').textContent;
-                
-                emailView.innerHTML = \`
-                    <div style="max-width: 800px; width: 100%; padding: 40px;">
-                        <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
-                            <h2 style="color: #e5e5e5; margin-bottom: 8px;">\${subject}</h2>
-                            <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
-                                <span>From: <strong style="color: #e5e5e5;">\${from}</strong></span>
-                                <span class="encryption-badge">🔐 End-to-End Encrypted</span>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up interactions...');
+            
+            // Email item click functionality
+            const emailItems = document.querySelectorAll('.email-item');
+            console.log('Found', emailItems.length, 'email items');
+            
+            emailItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    console.log('Email item clicked:', index);
+                    
+                    // Remove active class from all items
+                    emailItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Get email content
+                    const fromElement = this.querySelector('.email-from');
+                    const subjectElement = this.querySelector('.email-subject');
+                    const previewElement = this.querySelector('.email-preview');
+                    
+                    if (!fromElement || !subjectElement || !previewElement) {
+                        console.error('Could not find email elements');
+                        return;
+                    }
+                    
+                    const from = fromElement.textContent.trim();
+                    const subject = subjectElement.textContent.trim();
+                    const preview = previewElement.textContent.trim();
+                    
+                    // Update email view
+                    const emailView = document.querySelector('.email-view');
+                    if (emailView) {
+                        emailView.innerHTML = `
+                            <div style="max-width: 800px; width: 100%; padding: 40px;">
+                                <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
+                                    <h2 style="color: #e5e5e5; margin-bottom: 8px; font-size: 24px;">${subject}</h2>
+                                    <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
+                                        <span>From: <strong style="color: #e5e5e5;">${from}</strong></span>
+                                        <span style="background: #10b981; color: white; font-size: 9px; padding: 2px 4px; border-radius: 4px;">🔐 E2E</span>
+                                        <span>Just now</span>
+                                    </div>
+                                </div>
+                                <div style="line-height: 1.6; color: #e5e5e5; font-size: 15px;">
+                                    <p>${preview}</p>
+                                    <br>
+                                    <p>This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.</p>
+                                    <br>
+                                    <p>The content is protected with military-grade ChaCha20-Poly1305 encryption, and even Skiff's servers cannot decrypt or access your messages.</p>
+                                    <br>
+                                    <p>Best regards,<br><strong>${from}</strong></p>
+                                </div>
+                                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
+                                    🔒 This message is secured with ChaCha20-Poly1305 encryption
+                                </div>
                             </div>
-                        </div>
-                        <div style="line-height: 1.6; color: #e5e5e5;">
-                            <p>\${preview}</p>
-                            <br>
-                            <p>This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.</p>
-                            <br>
-                            <p>Best regards,<br>\${from}</p>
-                        </div>
-                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
-                            🔒 This message is secured with ChaCha20-Poly1305 encryption
-                        </div>
-                    </div>
-                \`;
-                
-                // Remove unread status
-                this.classList.remove('unread');
-                const unreadDot = this.querySelector('.unread-dot');
-                if (unreadDot) {
-                    unreadDot.remove();
-                }
+                        `;
+                    }
+                    
+                    // Remove unread status
+                    this.classList.remove('unread');
+                    const unreadDot = this.querySelector('.unread-dot');
+                    if (unreadDot) {
+                        unreadDot.remove();
+                    }
+                    
+                    // Update badge count
+                    const badge = document.querySelector('.nav-item.active .badge');
+                    if (badge) {
+                        const currentCount = parseInt(badge.textContent) || 0;
+                        const newCount = Math.max(0, currentCount - 1);
+                        if (newCount > 0) {
+                            badge.textContent = newCount;
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                    }
+                });
             });
-        });
-        
-        // Compose button functionality
-        document.querySelector('.compose-btn').addEventListener('click', function() {
-            alert('🔒 Compose window would open here with end-to-end encryption enabled!');
-        });
-        
-        // Search functionality
-        document.querySelector('.search').addEventListener('input', function(e) {
-            const query = e.target.value.toLowerCase();
-            document.querySelectorAll('.email-item').forEach(item => {
-                const text = item.textContent.toLowerCase();
-                item.style.display = text.includes(query) ? 'block' : 'none';
+            
+            // Compose button functionality
+            const composeBtn = document.querySelector('.compose-btn');
+            if (composeBtn) {
+                composeBtn.addEventListener('click', function() {
+                    alert('🔒 Compose New Email\\n\\nFeatures:\\n• End-to-end encryption enabled by default\\n• Rich text editor with full formatting\\n• Secure attachment handling\\n• Scheduled sending options\\n• Email templates and signatures');
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const query = e.target.value.toLowerCase();
+                    emailItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        item.style.display = text.includes(query) ? 'block' : 'none';
+                    });
+                });
+            }
+            
+            // Navigation item clicks
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const folderName = this.textContent.trim().split(' ')[1] || this.textContent.trim();
+                    
+                    const emailView = document.querySelector('.email-view');
+                    if (emailView) {
+                        emailView.innerHTML = `
+                            <div class="empty-state">
+                                <h3>📁 ${folderName}</h3>
+                                <p>You've selected the ${folderName} folder.</p>
+                                <p style="margin-top: 16px; font-size: 12px;">
+                                    All content in this folder is encrypted end-to-end.<br>
+                                    Click back to Inbox to see the demo emails.
+                                </p>
+                            </div>
+                        `;
+                    }
+                });
             });
+            
+            console.log('All interactions set up successfully!');
         });
     </script>
 </body>
