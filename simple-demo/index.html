@@ -455,6 +455,22 @@
                 ]
             };
 
+            // Function to update badge count
+            function updateBadgeCount() {
+                const inboxEmails = folderEmails['Inbox'];
+                const unreadCount = inboxEmails.filter(email => email.unread && !readEmails.has(email.id)).length;
+                
+                const badge = document.querySelector('.nav-item.active .badge');
+                if (badge) {
+                    if (unreadCount > 0) {
+                        badge.textContent = unreadCount;
+                        badge.style.display = 'inline';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+
             // Function to render emails for a specific folder
             function renderEmailsForFolder(folderName) {
                 const emailList = document.querySelector('.email-list');
