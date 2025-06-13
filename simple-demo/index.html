@@ -491,20 +491,23 @@
                     `;
                 } else {
                     // Render emails for this folder
-                    emailList.innerHTML = emails.map((email, index) => `
-                        <div class="email-item ${email.unread ? 'unread' : ''}" data-folder="${folderName}" data-index="${index}">
-                            <div class="email-meta">
-                                <div style="display: flex; align-items: center;">
-                                    ${email.unread ? '<div class="unread-dot"></div>' : ''}
-                                    <span class="email-from">${email.from}</span>
-                                    <span class="encryption-badge">E2E</span>
+                    emailList.innerHTML = emails.map((email, index) => {
+                        const isUnread = email.unread && !readEmails.has(email.id);
+                        return `
+                            <div class="email-item ${isUnread ? 'unread' : ''}" data-email-id="${email.id}" data-folder="${folderName}">
+                                <div class="email-meta">
+                                    <div style="display: flex; align-items: center;">
+                                        ${isUnread ? '<div class="unread-dot"></div>' : ''}
+                                        <span class="email-from">${email.from}</span>
+                                        <span class="encryption-badge">E2E</span>
+                                    </div>
+                                    <span class="email-time">2:30 PM</span>
                                 </div>
-                                <span class="email-time">2:30 PM</span>
+                                <div class="email-subject">${email.subject}</div>
+                                <div class="email-preview">${email.preview}</div>
                             </div>
-                            <div class="email-subject">${email.subject}</div>
-                            <div class="email-preview">${email.preview}</div>
-                        </div>
-                    `).join('');
+                        `;
+                    }).join('');
                     
                     // Re-attach click events to new email items
                     attachEmailClickEvents();
