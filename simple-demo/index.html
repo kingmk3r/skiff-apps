@@ -338,9 +338,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             console.log('DOM loaded, setting up interactions...');
             
-            // Email item click functionality
-            const emailItems = document.querySelectorAll('.email-item');
-            console.log('Found', emailItems.length, 'email items');
+            // Track read status of emails
+            const readEmails = new Set();
             
             emailItems.forEach((item, index) => {
                 item.addEventListener('click', function() {
