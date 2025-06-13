@@ -1,0 +1,39 @@
+{
+  "name": "skiff-demo",
+  "version": "1.0.0",
+  "description": "Simplified Skiff Mail Demo",
+  "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "dev": "react-scripts start"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "5.0.1",
+    "styled-components": "^5.3.3",
+    "framer-motion": "^6.3.3",
+    "@mui/material": "^5.10.0",
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.39",
+    "@types/react-dom": "^17.0.2",
+    "@types/styled-components": "^5.1.15",
+    "typescript": "^4.9.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
