@@ -435,6 +435,175 @@
                 });
             }
             
+            // Create different email sets for each folder
+            const folderEmails = {
+                'Inbox': [
+                    { from: 'Sarah Johnson', subject: 'Re: Project update and next steps', preview: 'Thanks for the update! I think we should schedule a meeting to discuss the timeline. The encryption is working perfectly...', unread: true },
+                    { from: 'GitHub Notifications', subject: '[skiff-org/skiff-mail] New pull request', preview: 'A new pull request has been opened for review. The changes include improvements to the encryption system...', unread: true },
+                    { from: 'Team Skiff', subject: 'Welcome to Skiff Mail! 🎉', preview: 'Your private, encrypted email account is ready. All your communications are protected with end-to-end encryption...', unread: false },
+                    { from: 'Security Alert', subject: 'New device login detected', preview: 'We detected a login from a new device. If this was you, no action is needed. All data remains encrypted...', unread: false },
+                    { from: 'Alex Chen', subject: 'Quarterly report attached', preview: 'Please find the encrypted quarterly report attached. All financial data is protected with zero-knowledge encryption...', unread: false }
+                ],
+                'Sent': [
+                    { from: 'You', subject: 'Re: Weekly team sync', preview: 'Thanks for organizing the sync! The agenda looks comprehensive. I\'ll prepare the encryption metrics report...', unread: false },
+                    { from: 'You', subject: 'Vacation request - December', preview: 'Hi team, I\'d like to request time off from December 20-30. All my projects will be up to date before I leave...', unread: false },
+                    { from: 'You', subject: 'Re: Privacy policy updates', preview: 'The new privacy policy looks excellent. The zero-knowledge guarantees are clearly explained for users...', unread: false }
+                ],
+                'Drafts': [
+                    { from: 'Draft', subject: 'Q4 Performance Review', preview: 'This quarter has been exceptional for our privacy initiatives. Key achievements include...', unread: false },
+                    { from: 'Draft', subject: 'Feature request: Enhanced search', preview: 'I\'d like to propose some improvements to our encrypted search functionality...', unread: false },
+                    { from: 'Draft', subject: 'Birthday party invitation', preview: 'You\'re invited to celebrate my birthday! Even our party invitations are encrypted 🎉...', unread: false }
+                ]
+            };
+
+            // Function to render emails for a specific folder
+            function renderEmailsForFolder(folderName) {
+                const emailList = document.querySelector('.email-list');
+                const emailView = document.querySelector('.email-view');
+                
+                if (!emailList) return;
+                
+                const emails = folderEmails[folderName] || [];
+                
+                if (emails.length === 0) {
+                    // Show empty state for folders without demo emails
+                    emailList.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: #666;">
+                            <h3 style="margin-bottom: 12px; color: #999;">📁 ${folderName}</h3>
+                            <p>This folder is empty or not implemented in the demo.</p>
+                            <p style="margin-top: 12px; font-size: 12px;">Click "Inbox" to see demo emails.</p>
+                        </div>
+                    `;
+                } else {
+                    // Render emails for this folder
+                    emailList.innerHTML = emails.map((email, index) => `
+                        <div class="email-item ${email.unread ? 'unread' : ''}" data-folder="${folderName}" data-index="${index}">
+                            <div class="email-meta">
+                                <div style="display: flex; align-items: center;">
+                                    ${email.unread ? '<div class="unread-dot"></div>' : ''}
+                                    <span class="email-from">${email.from}</span>
+                                    <span class="encryption-badge">E2E</span>
+                                </div>
+                                <span class="email-time">2:30 PM</span>
+                            </div>
+                            <div class="email-subject">${email.subject}</div>
+                            <div class="email-preview">${email.preview}</div>
+                        </div>
+                    `).join('');
+                    
+                    // Re-attach click events to new email items
+                    attachEmailClickEvents();
+                }
+                
+                // Reset email view
+                if (emailView) {
+                    emailView.innerHTML = `
+                        <div class="empty-state">
+                            <h3>🔒 Select an encrypted email</h3>
+                            <p>Choose an email from the ${folderName} list to view its encrypted content.</p>
+                            <p style="margin-top: 16px; font-size: 12px;">
+                                All emails are protected with end-to-end encryption.<br>
+                                Only you can read your messages.
+                            </p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Function to attach click events to email items
+            function attachEmailClickEvents() {
+                const emailItems = document.querySelectorAll('.email-item');
+                emailItems.forEach((item, index) => {
+                    item.addEventListener('click', function() {
+                        // Remove selection from all items
+                        emailItems.forEach(i => i.classList.remove('selected'));
+                        // Add selection to clicked item
+                        this.classList.add('selected');
+                        
+                        const folder = this.dataset.folder;
+                        const emailIndex = this.dataset.index;
+                        const fromElement = this.querySelector('.email-from');
+                        const subjectElement = this.querySelector('.email-subject');
+                        const previewElement = this.querySelector('.email-preview');
+                        
+                        if (!fromElement || !subjectElement || !previewElement) {
+                            console.error('Could not find email elements');
+                            return;
+                        }
+                        
+                        const from = fromElement.textContent.trim();
+                        const subject = subjectElement.textContent.trim();
+                        const preview = previewElement.textContent.trim();
+                        
+                        // Generate different content based on folder
+                        let fullContent = preview;
+                        if (folder === 'Sent') {
+                            fullContent = `${preview}
+
+This email was sent from your encrypted Skiff Mail account. The recipient received a fully encrypted message that only they can decrypt and read.
+
+Sent items are stored locally in encrypted format and synced securely across your devices.
+
+Best regards,
+Your Name
+
+---
+🔒 This sent message is secured with ChaCha20-Poly1305 encryption`;
+                        } else if (folder === 'Drafts') {
+                            fullContent = `${preview}
+
+[This is a draft message - not yet sent]
+
+You can continue editing this draft and send it when ready. All drafts are stored locally in encrypted format for your privacy.
+
+Draft saved automatically with end-to-end encryption.
+
+---
+🔒 This draft is secured with ChaCha20-Poly1305 encryption`;
+                        } else {
+                            fullContent = `${preview}
+
+This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.
+
+The content is protected with military-grade ChaCha20-Poly1305 encryption, and even Skiff's servers cannot decrypt or access your messages.
+
+Best regards,
+${from}
+
+---
+🔒 This message is secured with ChaCha20-Poly1305 encryption`;
+                        }
+                        
+                        // Update email view
+                        const emailView = document.querySelector('.email-view');
+                        if (emailView) {
+                            emailView.innerHTML = `
+                                <div style="max-width: 800px; width: 100%; padding: 40px;">
+                                    <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
+                                        <h2 style="color: #e5e5e5; margin-bottom: 8px; font-size: 24px;">${subject}</h2>
+                                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
+                                            <span>${folder === 'Sent' ? 'To' : 'From'}: <strong style="color: #e5e5e5;">${from}</strong></span>
+                                            <span style="background: #10b981; color: white; font-size: 9px; padding: 2px 4px; border-radius: 4px;">🔐 E2E</span>
+                                            <span>Just now</span>
+                                        </div>
+                                    </div>
+                                    <div style="line-height: 1.6; color: #e5e5e5; font-size: 15px;">
+                                        ${fullContent.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '<br>').join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        // Remove unread status
+                        this.classList.remove('unread');
+                        const unreadDot = this.querySelector('.unread-dot');
+                        if (unreadDot) {
+                            unreadDot.remove();
+                        }
+                    });
+                });
+            }
+
             // Navigation item clicks
             const navItems = document.querySelectorAll('.nav-item');
             navItems.forEach(item => {
@@ -442,23 +611,23 @@
                     navItems.forEach(i => i.classList.remove('active'));
                     this.classList.add('active');
                     
-                    const folderName = this.textContent.trim().split(' ')[1] || this.textContent.trim();
+                    // Get folder name from the nav item text
+                    const fullText = this.textContent.trim();
+                    const folderName = fullText.includes('📧') ? 'Inbox' :
+                                     fullText.includes('📤') ? 'Sent' :
+                                     fullText.includes('📝') ? 'Drafts' :
+                                     fullText.includes('🗂️') ? 'Archive' :
+                                     fullText.includes('🗑️') ? 'Trash' :
+                                     fullText.includes('⚠️') ? 'Spam' :
+                                     fullText.split(' ')[1] || fullText.split(' ')[0];
                     
-                    const emailView = document.querySelector('.email-view');
-                    if (emailView) {
-                        emailView.innerHTML = `
-                            <div class="empty-state">
-                                <h3>📁 ${folderName}</h3>
-                                <p>You've selected the ${folderName} folder.</p>
-                                <p style="margin-top: 16px; font-size: 12px;">
-                                    All content in this folder is encrypted end-to-end.<br>
-                                    Click back to Inbox to see the demo emails.
-                                </p>
-                            </div>
-                        `;
-                    }
+                    console.log('Switching to folder:', folderName);
+                    renderEmailsForFolder(folderName);
                 });
             });
+
+            // Initialize with Inbox
+            renderEmailsForFolder('Inbox');
             
             console.log('All interactions set up successfully!');
         });
