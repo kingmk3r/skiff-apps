@@ -4,7 +4,11 @@
     "declaration": true,
     "outDir": "dist",
     "noEmit": false,
-    "composite": true
+    "composite": true,
+    "lib": ["es2021", "dom", "dom.iterable"],
+    "target": "es2020",
+    "skipLibCheck": true,
+    "strict": false
   },
   "exclude": ["node_modules", "dist", "**/dist/**/*"]
 }
