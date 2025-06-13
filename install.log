@@ -1,0 +1,178 @@
+➤ YN0050: The --frozen-lockfile option is deprecated; use --immutable and/or --immutable-cache instead
+➤ YN0000: ┌ Resolution step
+➤ YN0002: │ @graphql-codegen/cli@npm:2.16.5 [dbb78] doesn't provide @types/node (pc377e), requested by cosmiconfig-typescript-loader
+➤ YN0002: │ @graphql-codegen/cli@npm:2.16.5 [dbb78] doesn't provide @types/node (p10be6), requested by ts-node
+➤ YN0002: │ @graphql-codegen/cli@npm:2.16.5 [dbb78] doesn't provide typescript (p3499d), requested by cosmiconfig-typescript-loader
+➤ YN0002: │ @graphql-codegen/cli@npm:2.16.5 [dbb78] doesn't provide typescript (pe12fd), requested by ts-node
+➤ YN0002: │ @graphql-tools/graphql-tag-pluck@npm:7.5.2 [c4f21] doesn't provide @babel/core (p03e78), requested by @babel/plugin-syntax-import-assertions
+➤ YN0002: │ @whatwg-node/fetch@npm:0.6.9 doesn't provide @types/node (pc8b91), requested by @whatwg-node/node-fetch
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [1724e] doesn't provide @babel/core (p2ace5), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [29901] doesn't provide @babel/core (p4edab), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [2d3f6] doesn't provide @babel/core (p5a222), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [773d5] doesn't provide @babel/core (p58ae1), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [ac77e] doesn't provide @babel/core (pe01b0), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [ad37c] doesn't provide @babel/core (p443bc), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [dc3fc] doesn't provide @babel/core (pc0077), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [de8f9] doesn't provide @babel/core (pf9424), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ babel-plugin-styled-components@npm:2.1.4 [f23d2] doesn't provide @babel/core (p60992), requested by @babel/plugin-syntax-jsx
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pa997e), requested by @babel/plugin-proposal-class-properties
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pfc158), requested by @babel/plugin-proposal-decorators
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p64e85), requested by @babel/plugin-proposal-do-expressions
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p69f17), requested by @babel/plugin-proposal-export-default-from
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p6044a), requested by @babel/plugin-proposal-export-namespace-from
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pd1436), requested by @babel/plugin-proposal-function-bind
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p12e61), requested by @babel/plugin-proposal-function-sent
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p4ad1b), requested by @babel/plugin-proposal-json-strings
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p01b78), requested by @babel/plugin-proposal-logical-assignment-operators
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p9c916), requested by @babel/plugin-proposal-nullish-coalescing-operator
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p5b0ca), requested by @babel/plugin-proposal-numeric-separator
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p9de87), requested by @babel/plugin-proposal-optional-chaining
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pd43e4), requested by @babel/plugin-proposal-pipeline-operator
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p4f32a), requested by @babel/plugin-proposal-throw-expressions
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p960ca), requested by @babel/plugin-transform-react-constant-elements
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p540c4), requested by @babel/plugin-transform-react-inline-elements
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p48c08), requested by @babel/plugin-transform-runtime
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pe2a80), requested by @babel/preset-env
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pa1fea), requested by @babel/preset-react
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p7944b), requested by @babel/preset-typescript
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p91a26), requested by @babel/register
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (pd16ad), requested by babel-loader
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p36d3c), requested by babel-plugin-dev-expression
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @babel/core (p977b1), requested by babel-plugin-transform-import-meta
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @mui/system (p25a96), requested by @mui/x-date-pickers
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide @swc/core (pd047e), requested by @swc/jest
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide graphql-tag (p1b711), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ calendar-web@workspace:calendar-web doesn't provide react-is (pa27a8), requested by styled-components
+➤ YN0060: │ calendar-web@workspace:calendar-web provides typescript (p92214) with version 5.1.3, which doesn't satisfy what msw requests
+➤ YN0002: │ eslint-config-skiff-eslint@workspace:libs/eslint-config-skiff-eslint doesn't provide prettier (p31c04), requested by eslint-plugin-prettier
+➤ YN0060: │ nightwatch-ui@workspace:libs/nightwatch-ui provides esbuild (p376cb) with version 0.15.18, which doesn't satisfy what esbuild-sass-plugin requests
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui doesn't provide react-is (pce7ca), requested by styled-components
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui doesn't provide webpack (pee744), requested by css-loader
+➤ YN0060: │ nightwatch-ui@workspace:libs/nightwatch-ui [21f4d] provides esbuild (p39bc0) with version 0.15.18, which doesn't satisfy what esbuild-sass-plugin requests
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [21f4d] doesn't provide react-is (p55c35), requested by styled-components
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [21f4d] doesn't provide webpack (p051bf), requested by css-loader
+➤ YN0060: │ nightwatch-ui@workspace:libs/nightwatch-ui [5fb88] provides esbuild (p4122e) with version 0.15.18, which doesn't satisfy what esbuild-sass-plugin requests
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [5fb88] doesn't provide react-is (p7cfac), requested by styled-components
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [5fb88] doesn't provide webpack (p94f3d), requested by css-loader
+➤ YN0060: │ nightwatch-ui@workspace:libs/nightwatch-ui [e89c3] provides esbuild (p3b11b) with version 0.15.18, which doesn't satisfy what esbuild-sass-plugin requests
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [e89c3] doesn't provide react-is (pe2eab), requested by styled-components
+➤ YN0002: │ nightwatch-ui@workspace:libs/nightwatch-ui [e89c3] doesn't provide webpack (pd3e26), requested by css-loader
+➤ YN0002: │ prosemirror-dev-tools@npm:3.1.0 [dc3fc] doesn't provide babel-runtime (p0dc2d), requested by react-dock
+➤ YN0002: │ prosemirror-dev-tools@npm:3.1.0 [e6d50] doesn't provide babel-runtime (p49ea8), requested by react-dock
+➤ YN0002: │ react-pdf@npm:5.7.2 [dc3fc] doesn't provide webpack (pcab9d), requested by file-loader
+➤ YN0002: │ react-pdf@npm:5.7.2 [e29c5] doesn't provide webpack (p1a34c), requested by file-loader
+➤ YN0002: │ regenerator-preset@npm:0.13.2 doesn't provide @babel/core (p04ea9), requested by @babel/plugin-proposal-function-sent
+➤ YN0002: │ regenerator-preset@npm:0.13.2 doesn't provide @babel/core (pdae93), requested by @babel/plugin-transform-arrow-functions
+➤ YN0002: │ regenerator-preset@npm:0.13.2 doesn't provide @babel/core (pe23cf), requested by @babel/plugin-transform-block-scoping
+➤ YN0002: │ regenerator-preset@npm:0.13.2 doesn't provide @babel/core (pce054), requested by @babel/plugin-transform-classes
+➤ YN0002: │ regenerator-preset@npm:0.13.2 doesn't provide @babel/core (pe9707), requested by @babel/plugin-transform-for-of
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @opentelemetry/api (pd49c6), requested by @opentelemetry/instrumentation-graphql
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (pbd210), requested by @tiptap/core
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (p6fb14), requested by @tiptap/extension-dropcursor
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (pc0237), requested by @tiptap/extension-history
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (p52f3c), requested by @tiptap/extension-link
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (p4481e), requested by @tiptap/extension-placeholder
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide @tiptap/pm (p44d8d), requested by @tiptap/react
+➤ YN0060: │ root-workspace-0b6124@workspace:. provides babel-jest (p2939b) with version 27.2.3, which doesn't satisfy what ts-jest requests
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide graphql-tag (p815f3), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0060: │ root-workspace-0b6124@workspace:. provides prosemirror-tables (p0cb0b) with version 1.3.5, which doesn't satisfy what prosemirror-utils requests
+➤ YN0060: │ root-workspace-0b6124@workspace:. provides react (pf9793) with version 17.0.2, which doesn't satisfy what prosemirror-dev-tools and some of its descendants request
+➤ YN0060: │ root-workspace-0b6124@workspace:. provides react-dom (pcc3c6) with version 17.0.2, which doesn't satisfy what prosemirror-dev-tools and some of its descendants request
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide webpack (p4e710), requested by file-loader
+➤ YN0002: │ root-workspace-0b6124@workspace:. doesn't provide webpack (p09b68), requested by next-images
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p16d71), requested by @babel/plugin-proposal-class-properties
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p677ce), requested by @babel/plugin-proposal-decorators
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (ped699), requested by @babel/plugin-proposal-do-expressions
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p99c54), requested by @babel/plugin-proposal-export-default-from
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p52962), requested by @babel/plugin-proposal-export-namespace-from
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p32985), requested by @babel/plugin-proposal-function-bind
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pda50a), requested by @babel/plugin-proposal-function-sent
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pec784), requested by @babel/plugin-proposal-json-strings
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p445a0), requested by @babel/plugin-proposal-logical-assignment-operators
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p6974d), requested by @babel/plugin-proposal-nullish-coalescing-operator
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p4703c), requested by @babel/plugin-proposal-numeric-separator
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p7906f), requested by @babel/plugin-proposal-optional-chaining
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pbb707), requested by @babel/plugin-proposal-pipeline-operator
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pec7da), requested by @babel/plugin-proposal-throw-expressions
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pa4497), requested by @babel/plugin-transform-react-constant-elements
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pd7fa4), requested by @babel/plugin-transform-react-inline-elements
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p10776), requested by @babel/plugin-transform-runtime
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p4dba0), requested by @babel/preset-env
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p05df9), requested by @babel/preset-react
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pe9cd6), requested by @babel/preset-typescript
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p4209b), requested by @babel/register
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p57c0b), requested by babel-plugin-dev-expression
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (pc3cb8), requested by babel-plugin-transform-import-meta
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @babel/core (p51746), requested by babel-loader
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @mui/system (p46043), requested by @mui/x-date-pickers
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @swc/core (p2f945), requested by @swc/jest
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (p1a814), requested by @tiptap/core
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (p4f1a8), requested by @tiptap/extension-dropcursor
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (pa9040), requested by @tiptap/extension-history
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (pa9355), requested by @tiptap/extension-link
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (pab033), requested by @tiptap/extension-placeholder
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide @tiptap/pm (pf3a9d), requested by @tiptap/react
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide graphql-tag (pc12a0), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide prosemirror-tables (p41dcc), requested by prosemirror-utils
+➤ YN0060: │ skemail-web@workspace:skemail-web provides react (p7c4c8) with version 17.0.2, which doesn't satisfy what prosemirror-dev-tools and some of its descendants request
+➤ YN0060: │ skemail-web@workspace:skemail-web provides react-dom (p0889f) with version 17.0.2, which doesn't satisfy what prosemirror-dev-tools and some of its descendants request
+➤ YN0002: │ skemail-web@workspace:skemail-web doesn't provide react-is (p7395d), requested by styled-components
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql doesn't provide graphql-tag (pb4c15), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql [21f4d] doesn't provide graphql-tag (p9fd19), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql [739fa] doesn't provide graphql-tag (p53c21), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql [e29c5] doesn't provide graphql-tag (pee588), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql [e6d50] doesn't provide graphql-tag (p1dcac), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-graphql@workspace:libs/skiff-front-graphql [e89c3] doesn't provide graphql-tag (pa9894), requested by @graphql-codegen/typescript-react-apollo
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils doesn't provide @swc/core (p3b453), requested by @swc/jest
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils doesn't provide eslint (pcad2d), requested by eslint-plugin-react
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils doesn't provide graphql (pc5069), requested by @apollo/client
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils doesn't provide react-is (p14163), requested by styled-components
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [21f4d] doesn't provide @swc/core (p36f64), requested by @swc/jest
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [21f4d] doesn't provide eslint (pbd14c), requested by eslint-plugin-react
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [21f4d] doesn't provide graphql (pd2695), requested by @apollo/client
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [21f4d] doesn't provide react-is (p92bca), requested by styled-components
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [5fb88] doesn't provide @swc/core (p916cd), requested by @swc/jest
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [5fb88] doesn't provide eslint (p7f3e1), requested by eslint-plugin-react
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [5fb88] doesn't provide graphql (p290c2), requested by @apollo/client
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [5fb88] doesn't provide react-is (p9a65c), requested by styled-components
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [dc3fc] doesn't provide @swc/core (p788c4), requested by @swc/jest
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [dc3fc] doesn't provide eslint (p72ce0), requested by eslint-plugin-react
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [dc3fc] doesn't provide graphql (pe451d), requested by @apollo/client
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [dc3fc] doesn't provide react-is (p35f60), requested by styled-components
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [e6d50] doesn't provide @swc/core (pe2cb4), requested by @swc/jest
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [e6d50] doesn't provide eslint (p5aaaa), requested by eslint-plugin-react
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [e6d50] doesn't provide graphql (p3c96a), requested by @apollo/client
+➤ YN0002: │ skiff-front-utils@workspace:libs/skiff-front-utils [e6d50] doesn't provide react-is (p95c2a), requested by styled-components
+➤ YN0060: │ skiff-prosemirror@workspace:libs/skiff-prosemirror provides esbuild (p8015b) with version 0.15.18, which doesn't satisfy what esbuild-sass-plugin requests
+➤ YN0060: │ skiff-prosemirror@workspace:libs/skiff-prosemirror provides esbuild (pd718c) with version 0.15.18, which doesn't satisfy what @deanc/esbuild-plugin-postcss requests
+➤ YN0002: │ skiff-prosemirror@workspace:libs/skiff-prosemirror doesn't provide notistack (p0c045), requested by skiff-front-utils
+➤ YN0002: │ skiff-prosemirror@workspace:libs/skiff-prosemirror doesn't provide react-is (p6ffd1), requested by styled-components
+➤ YN0002: │ skiff-utils@workspace:libs/skiff-utils doesn't provide @swc/core (p23cfd), requested by @swc/jest
+➤ YN0002: │ unstated@npm:2.1.1 [7c69a] doesn't provide prop-types (p4f120), requested by create-react-context
+➤ YN0000: │ Some peer dependencies are incorrectly met; run yarn explain peer-requirements <hash> for details, where <hash> is the six-letter p-prefixed code
+➤ YN0000: └ Completed in 2s 783ms
+➤ YN0000: ┌ Fetch step
+➤ YN0000: └ Completed in 3s 422ms
+➤ YN0000: ┌ Link step
+➤ YN0005: │ browser-tabs-lock@npm:1.3.0 lists build scripts, but its build has been explicitly disabled through configuration.
+➤ YN0007: │ @apollo/protobufjs@npm:1.2.7 must be built because it never has been before or the last one failed
+➤ YN0007: │ @apollo/rover@npm:0.12.2 must be built because it never has been before or the last one failed
+➤ YN0007: │ core-js@npm:2.6.12 must be built because it never has been before or the last one failed
+➤ YN0007: │ core-js@npm:3.33.3 must be built because it never has been before or the last one failed
+➤ YN0007: │ protobufjs@npm:7.2.5 must be built because it never has been before or the last one failed
+➤ YN0007: │ esbuild@npm:0.14.54 must be built because it never has been before or the last one failed
+➤ YN0007: │ esbuild@npm:0.17.19 must be built because it never has been before or the last one failed
+➤ YN0007: │ esbuild@npm:0.15.18 must be built because it never has been before or the last one failed
+➤ YN0007: │ protobufjs@npm:6.11.3 must be built because it never has been before or the last one failed
+➤ YN0007: │ core-js@npm:3.31.0 must be built because it never has been before or the last one failed
+➤ YN0007: │ esbuild@npm:0.14.47 must be built because it never has been before or the last one failed
+➤ YN0007: │ esbuild@npm:0.16.17 must be built because it never has been before or the last one failed
+➤ YN0007: │ msw@npm:0.48.3 [21f4d] must be built because it never has been before or the last one failed
+➤ YN0007: │ es5-ext@npm:0.10.62 must be built because it never has been before or the last one failed
+➤ YN0007: │ sharp@npm:0.32.6 must be built because it never has been before or the last one failed
+➤ YN0007: │ core-js-pure@npm:3.33.3 must be built because it never has been before or the last one failed
+➤ YN0007: │ keccak@npm:3.0.3 must be built because it never has been before or the last one failed
+➤ YN0007: │ secp256k1@npm:4.0.3 must be built because it never has been before or the last one failed
+➤ YN0007: │ tiny-secp256k1@npm:1.1.6 must be built because it never has been before or the last one failed
+➤ YN0000: └ Completed in 49s 29ms
+➤ YN0000: Done with warnings in 56s 607ms
