@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skiff Demo Hub</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+            color: white;
+            margin: 0;
+            padding: 40px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .hero {
+            text-align: center;
+            max-width: 800px;
+            margin-bottom: 40px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 600;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #999;
+            line-height: 1.6;
+        }
+        
+        .demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            max-width: 1000px;
+            width: 100%;
+        }
+        
+        .demo-card {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+            border-color: #6366f1;
+        }
+        
+        .demo-card h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            color: #e5e5e5;
+        }
+        
+        .demo-card p {
+            color: #999;
+            line-height: 1.5;
+            margin-bottom: 16px;
+        }
+        
+        .demo-card .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .demo-card .features li {
+            color: #bbb;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        
+        .demo-card .features li::before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background: #5855e6;
+            transform: translateY(-1px);
+        }
+        
+        .status {
+            margin-top: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .encryption-badge {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #10b981;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🔒 Skiff Productivity Suite</h1>
+        <p>Experience the privacy-first, end-to-end encrypted workspace. All demos are fully interactive and showcase the authentic Skiff experience.</p>
+        <div style="margin-top: 16px;">
+            <span class="encryption-badge">🔐 End-to-End Encrypted</span>
+        </div>
+    </div>
+    
+    <div class="demos">
+        <div class="demo-card" onclick="window.open('./index.html', '_blank')">
+            <h3>📧 Simple Mail Demo</h3>
+            <p>Clean, minimal interface showcasing the core Skiff Mail experience.</p>
+            <ul class="features">
+                <li>Interactive email list</li>
+                <li>Email reading and selection</li>
+                <li>Search functionality</li>
+                <li>Encryption indicators</li>
+                <li>Responsive design</li>
+            </ul>
+            <a href="./index.html" class="btn">Launch Simple Demo</a>
+        </div>
+        
+        <div class="demo-card" onclick="window.open('./advanced.html', '_blank')">
+            <h3>🚀 Full Productivity Suite</h3>
+            <p>Complete experience with Mail, Calendar, and Pages applications.</p>
+            <ul class="features">
+                <li>All three Skiff apps</li>
+                <li>App switching interface</li>
+                <li>Rich interactive content</li>
+                <li>Authentic Skiff fonts</li>
+                <li>Advanced UI components</li>
+            </ul>
+            <a href="./advanced.html" class="btn">Launch Full Demo</a>
+        </div>
+        
+        <div class="demo-card">
+            <h3>⚙️ Original Codebase</h3>
+            <p>The real Skiff application with full functionality (has dependency issues).</p>
+            <ul class="features">
+                <li>Complete React application</li>
+                <li>GraphQL integration</li>
+                <li>Real encryption libraries</li>
+                <li>ProseMirror editor</li>
+                <li>Requires dependency fixes</li>
+            </ul>
+            <span style="color: #666; font-style: italic;">Coming soon...</span>
+        </div>
+    </div>
+    
+    <div class="status">
+        <p>🌐 Demos available on ports: 3000, 5000, 8000, 8080</p>
+        <p>🔧 Built from the authentic Skiff open-source codebase</p>
+    </div>
+    
+    <script>
+        // Auto-detect the best working demo link
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.demo-card');
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    const link = this.querySelector('a');
+                    if (link) {
+                        window.open(link.href, '_blank');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
