@@ -943,7 +943,7 @@
     </div>
 
     <script>
-        // Email data
+        // Email data with more detailed content
         const emails = {
             1: {
                 from: "Sarah Johnson",
@@ -979,12 +979,15 @@ Author: @alex-dev
 Reviewers: @sarah-pm, @mike-security
 
 Changes include:
-- Enhanced key derivation functions
-- Optimized React component rendering
-- Added comprehensive unit tests
+- Enhanced key derivation functions for better security
+- Optimized React component rendering for faster load times
+- Added comprehensive unit tests for all new features
 - Improved error handling for edge cases
+- Updated documentation for the new features
 
 The changes have been thoroughly tested and all CI checks are passing. Please review at your earliest convenience.
+
+You can view the full pull request at: https://github.com/skiff-org/skiff-mail/pull/847
 
 ---
 🔒 This notification is secured with end-to-end encryption`
@@ -1004,10 +1007,17 @@ Here's what makes Skiff Mail different:
 🚀 Fast & Reliable: Enjoy seamless performance without compromising security
 
 Getting Started:
-1. Compose your first encrypted email
+1. Compose your first encrypted email using the blue Compose button
 2. Organize emails with custom labels and folders
 3. Use our powerful search to find anything instantly
 4. Enable two-factor authentication for extra security
+5. Invite friends and colleagues to experience private communication
+
+Privacy Features:
+• Your encryption keys never leave your device
+• All metadata is encrypted and protected
+• No tracking or advertising - your privacy is our business
+• Open source and regularly audited by security experts
 
 If you have any questions, our support team is here to help. Just reply to this email and we'll get back to you shortly.
 
@@ -1016,115 +1026,243 @@ Welcome to the future of private communication!
 The Skiff Team
 
 ---
-🔒 Your privacy is our priority`
+🔒 Your privacy is our priority. This welcome message is also encrypted.`
+            },
+            4: {
+                from: "Security Alert",
+                subject: "New device login detected",
+                content: `Security Alert: New Device Login
+
+We detected a login to your Skiff account from a new device:
+
+Device: Chrome on macOS
+Location: San Francisco, CA
+Time: December 13, 2024 at 10:30 AM PST
+IP Address: 192.168.1.100 (masked for privacy)
+
+If this was you:
+No action is needed. All your data remains encrypted and secure.
+
+If this wasn't you:
+1. Change your password immediately
+2. Enable two-factor authentication
+3. Review your account activity
+4. Contact our security team
+
+Security Features Active:
+🔒 All data remains encrypted with your private keys
+🛡️ Zero-knowledge architecture protects your information
+🔐 End-to-end encryption for all communications
+📱 Two-factor authentication recommended
+
+Your account security is our top priority. Even in the unlikely event of unauthorized access, your encrypted data cannot be read without your private keys, which only exist on your trusted devices.
+
+Stay secure,
+Skiff Security Team
+
+---
+🔒 This security alert is encrypted end-to-end`
+            },
+            5: {
+                from: "Alex Chen",
+                subject: "Quarterly report attached",
+                content: `Hi there,
+
+Please find the encrypted quarterly report attached to this email. I've included all the financial data and performance metrics we discussed in our last meeting.
+
+Key highlights from Q4:
+• Revenue growth of 45% year-over-year
+• User acquisition exceeded targets by 23%
+• Customer satisfaction scores reached all-time high of 4.8/5
+• Security incidents: 0 (thanks to our encryption!)
+
+The report covers:
+1. Financial performance and projections
+2. User growth and engagement metrics
+3. Security and privacy compliance updates
+4. Competitive analysis and market position
+5. Strategic recommendations for Q1
+
+All financial data in this report is protected with zero-knowledge encryption protocols. The attached files are encrypted locally before transmission and can only be decrypted with your private keys.
+
+Please review the report and let me know if you have any questions. I'm available for a call this week to discuss the findings in detail.
+
+Best regards,
+Alex Chen
+Financial Analyst
+
+P.S. The encryption performance metrics in section 3 are particularly impressive - our users' data has never been more secure!
+
+---
+🔒 This message and all attachments are secured with military-grade encryption`
             }
         };
 
-        // App switching functionality
-        function switchApp(appName) {
-            // Hide all apps
-            document.querySelectorAll('.app-container').forEach(container => {
-                container.classList.remove('active');
-            });
-            
-            // Remove active class from all buttons
-            document.querySelectorAll('.app-switcher-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected app
-            document.getElementById(appName + '-app').classList.add('active');
-            
-            // Set active button
-            event.target.classList.add('active');
-        }
-
-        // Email functionality
-        document.querySelectorAll('.email-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const emailId = this.dataset.email;
-                if (!emailId || !emails[emailId]) return;
-                
-                // Remove selection from all items
-                document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
-                // Add selection to clicked item
-                this.classList.add('selected');
-                
-                const email = emails[emailId];
-                const emailView = document.querySelector('.email-view');
-                
-                emailView.innerHTML = `
-                    <div class="email-detail">
-                        <div class="email-detail-header">
-                            <h2 class="email-detail-subject">${email.subject}</h2>
-                            <div class="email-detail-meta">
-                                <span>From: <strong style="color: #e5e5e5;">${email.from}</strong></span>
-                                <span class="encryption-badge">🔐 End-to-End Encrypted</span>
-                                <span>Just now</span>
-                            </div>
-                        </div>
-                        <div class="email-detail-content">
-                            ${email.content.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '<br>').join('')}
-                        </div>
-                    </div>
-                `;
-                
-                // Remove unread status
-                this.classList.remove('unread');
-                const unreadDot = this.querySelector('.unread-dot');
-                if (unreadDot) {
-                    unreadDot.remove();
-                }
-                
-                // Update badge count
-                const badge = document.querySelector('.nav-item.active .badge');
-                if (badge) {
-                    const count = parseInt(badge.textContent) - 1;
-                    badge.textContent = count > 0 ? count : '';
-                    if (count <= 0) badge.style.display = 'none';
-                }
-            });
-        });
-
-        // Search functionality
-        document.querySelectorAll('.search').forEach(search => {
-            search.addEventListener('input', function(e) {
-                const query = e.target.value.toLowerCase();
-                if (this.closest('#mail-app')) {
-                    document.querySelectorAll('.email-item').forEach(item => {
-                        const text = item.textContent.toLowerCase();
-                        item.style.display = text.includes(query) ? 'block' : 'none';
-                    });
-                }
-            });
-        });
-
-        // Compose functionality
-        function composeEmail() {
-            alert('🔒 Compose window would open here!\n\nFeatures:\n• End-to-end encryption enabled by default\n• Rich text editor with full formatting\n• Secure attachment handling\n• Scheduled sending options\n• Email templates');
-        }
-
-        // Calendar functionality
-        document.querySelectorAll('.calendar-event').forEach(event => {
-            event.addEventListener('click', function() {
-                alert(`📅 Event: ${this.textContent}\n🔒 This event is end-to-end encrypted\n\nOnly invited participants can see event details.`);
-            });
-        });
-
-        // Pages functionality
-        function newDocument() {
-            alert('📝 New Document\n\n🔒 Features:\n• Real-time collaborative editing\n• End-to-end encryption\n• Version history\n• Rich text formatting\n• Secure sharing options');
-        }
-
-        // Add some interactive hover effects
+        // Wait for DOM to load
         document.addEventListener('DOMContentLoaded', function() {
-            // Add smooth transitions
-            document.body.style.transition = 'all 0.3s ease';
+            console.log('Advanced demo loading...');
             
-            // Simulate loading effect
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-            }, 100);
+            // App switching functionality
+            window.switchApp = function(appName) {
+                console.log('Switching to app:', appName);
+                
+                // Hide all apps
+                document.querySelectorAll('.app-container').forEach(container => {
+                    container.classList.remove('active');
+                });
+                
+                // Remove active class from all buttons
+                document.querySelectorAll('.app-switcher-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                
+                // Show selected app
+                const targetApp = document.getElementById(appName + '-app');
+                if (targetApp) {
+                    targetApp.classList.add('active');
+                }
+                
+                // Set active button
+                event.target.classList.add('active');
+            };
+
+            // Email functionality
+            const emailItems = document.querySelectorAll('.email-item');
+            emailItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    const emailId = this.dataset.email;
+                    console.log('Clicked email:', emailId);
+                    
+                    if (!emailId || !emails[emailId]) {
+                        console.error('Email data not found for ID:', emailId);
+                        return;
+                    }
+                    
+                    // Remove selection from all items
+                    emailItems.forEach(i => i.classList.remove('selected'));
+                    // Add selection to clicked item
+                    this.classList.add('selected');
+                    
+                    const email = emails[emailId];
+                    const emailView = document.querySelector('.email-view');
+                    
+                    if (emailView) {
+                        emailView.innerHTML = `
+                            <div class="email-detail">
+                                <div class="email-detail-header">
+                                    <h2 class="email-detail-subject">${email.subject}</h2>
+                                    <div class="email-detail-meta">
+                                        <span>From: <strong style="color: #e5e5e5;">${email.from}</strong></span>
+                                        <span class="encryption-badge">🔐 End-to-End Encrypted</span>
+                                        <span>Just now</span>
+                                    </div>
+                                </div>
+                                <div class="email-detail-content">
+                                    ${email.content.split('\n').map(line => {
+                                        line = line.trim();
+                                        if (!line) return '<br>';
+                                        if (line.startsWith('•')) return `<p style="margin-left: 20px;">${line}</p>`;
+                                        if (line.match(/^\d+\./)) return `<p style="margin-left: 20px;">${line}</p>`;
+                                        return `<p>${line}</p>`;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Remove unread status
+                    this.classList.remove('unread');
+                    const unreadDot = this.querySelector('.unread-dot');
+                    if (unreadDot) {
+                        unreadDot.remove();
+                    }
+                    
+                    // Update badge count
+                    const badge = document.querySelector('#mail-app .nav-item.active .badge');
+                    if (badge) {
+                        const count = parseInt(badge.textContent) - 1;
+                        if (count > 0) {
+                            badge.textContent = count;
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                    }
+                });
+            });
+
+            // Search functionality
+            document.querySelectorAll('.search').forEach(search => {
+                search.addEventListener('input', function(e) {
+                    const query = e.target.value.toLowerCase();
+                    if (this.closest('#mail-app')) {
+                        emailItems.forEach(item => {
+                            const text = item.textContent.toLowerCase();
+                            item.style.display = text.includes(query) ? 'block' : 'none';
+                        });
+                    }
+                });
+            });
+
+            // Compose functionality
+            window.composeEmail = function() {
+                alert('🔒 Compose New Email\\n\\nFeatures:\\n• End-to-end encryption enabled by default\\n• Rich text editor with full formatting\\n• Secure attachment handling\\n• Scheduled sending options\\n• Email templates and signatures\\n• Contact integration\\n• Draft auto-save');
+            };
+
+            // Calendar functionality
+            document.querySelectorAll('.calendar-event').forEach(event => {
+                event.addEventListener('click', function() {
+                    const eventTitle = this.textContent;
+                    alert(`📅 Calendar Event: ${eventTitle}\\n\\n🔒 This event is end-to-end encrypted\\n\\nFeatures:\\n• Encrypted event details\\n• Secure participant list\\n• Private location information\\n• Encrypted attachments\\n• Meeting notes protection\\n\\nOnly invited participants can see event details.`);
+                });
+            });
+
+            // Pages functionality
+            window.newDocument = function() {
+                alert('📝 Create New Document\\n\\n🔒 Skiff Pages Features:\\n• Real-time collaborative editing\\n• End-to-end encryption for all content\\n• Version history and document recovery\\n• Rich text formatting and media support\\n• Secure sharing with access controls\\n• Comment and suggestion system\\n• Export to multiple formats\\n• Offline editing capabilities');
+            };
+
+            // Navigation items in mail app
+            const mailNavItems = document.querySelectorAll('#mail-app .nav-item');
+            mailNavItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    mailNavItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Reset email view for different folders
+                    const emailView = document.querySelector('#mail-app .email-view');
+                    const folderName = this.textContent.trim().split(' ')[1] || this.textContent.trim().split(' ')[0];
+                    
+                    if (folderName === 'Inbox') {
+                        if (emailView) {
+                            emailView.innerHTML = `
+                                <div class="empty-state">
+                                    <h3>🔒 Select an encrypted email</h3>
+                                    <p>Choose an email from the list to view its encrypted content.</p>
+                                    <p style="margin-top: 16px; font-size: 12px;">
+                                        All emails are protected with end-to-end encryption.<br>
+                                        Only you can read your messages.
+                                    </p>
+                                </div>
+                            `;
+                        }
+                    } else {
+                        if (emailView) {
+                            emailView.innerHTML = `
+                                <div class="empty-state">
+                                    <h3>📁 ${folderName}</h3>
+                                    <p>You've selected the ${folderName} folder.</p>
+                                    <p style="margin-top: 16px; font-size: 12px;">
+                                        All content in this folder is encrypted end-to-end.<br>
+                                        Switch back to Inbox to see the demo emails.
+                                    </p>
+                                </div>
+                            `;
+                        }
+                    }
+                });
+            });
+            
+            console.log('Advanced demo setup complete!');
         });
     </script>
 </body>
