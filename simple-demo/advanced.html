@@ -1278,69 +1278,7 @@ P.S. The encryption performance metrics in section 3 are particularly impressive
                 });
             });
 
-            // Email functionality
-            const emailItems = document.querySelectorAll('.email-item');
-            emailItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
-                    const emailId = this.dataset.email;
-                    console.log('Clicked email:', emailId);
-                    
-                    if (!emailId || !emails[emailId]) {
-                        console.error('Email data not found for ID:', emailId);
-                        return;
-                    }
-                    
-                    // Remove selection from all items
-                    emailItems.forEach(i => i.classList.remove('selected'));
-                    // Add selection to clicked item
-                    this.classList.add('selected');
-                    
-                    const email = emails[emailId];
-                    const emailView = document.querySelector('.email-view');
-                    
-                    if (emailView) {
-                        emailView.innerHTML = `
-                            <div class="email-detail">
-                                <div class="email-detail-header">
-                                    <h2 class="email-detail-subject">${email.subject}</h2>
-                                    <div class="email-detail-meta">
-                                        <span>From: <strong style="color: #e5e5e5;">${email.from}</strong></span>
-                                        <span class="encryption-badge">🔐 End-to-End Encrypted</span>
-                                        <span>Just now</span>
-                                    </div>
-                                </div>
-                                <div class="email-detail-content">
-                                    ${email.content.split('\n').map(line => {
-                                        line = line.trim();
-                                        if (!line) return '<br>';
-                                        if (line.startsWith('•')) return `<p style="margin-left: 20px;">${line}</p>`;
-                                        if (line.match(/^\d+\./)) return `<p style="margin-left: 20px;">${line}</p>`;
-                                        return `<p>${line}</p>`;
-                                    }).join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
-                    
-                    // Remove unread status
-                    this.classList.remove('unread');
-                    const unreadDot = this.querySelector('.unread-dot');
-                    if (unreadDot) {
-                        unreadDot.remove();
-                    }
-                    
-                    // Update badge count
-                    const badge = document.querySelector('#mail-app .nav-item.active .badge');
-                    if (badge) {
-                        const count = parseInt(badge.textContent) - 1;
-                        if (count > 0) {
-                            badge.textContent = count;
-                        } else {
-                            badge.style.display = 'none';
-                        }
-                    }
-                });
-            });
+
 
             // Search functionality
             document.querySelectorAll('.search').forEach(search => {
