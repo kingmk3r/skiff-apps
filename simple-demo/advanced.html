@@ -1375,9 +1375,9 @@ P.S. The encryption performance metrics in section 3 are particularly impressive
             });
 
             // Pages functionality
-            window.newDocument = function() {
+            document.getElementById('new-doc-btn').addEventListener('click', function() {
                 alert('📝 Create New Document\\n\\n🔒 Skiff Pages Features:\\n• Real-time collaborative editing\\n• End-to-end encryption for all content\\n• Version history and document recovery\\n• Rich text formatting and media support\\n• Secure sharing with access controls\\n• Comment and suggestion system\\n• Export to multiple formats\\n• Offline editing capabilities');
-            };
+            });
 
             // Create different email sets for each folder
             const folderEmails = {
