@@ -3,3 +3,13 @@ Serving HTTP on 0.0.0.0 port 3000 (http://0.0.0.0:3000/) ...
 10.64.139.208 - - [13/Jun/2025 23:50:34] "GET / HTTP/1.1" 200 -
 10.64.131.45 - - [13/Jun/2025 23:55:04] "GET / HTTP/1.1" 200 -
 10.64.129.89 - - [14/Jun/2025 00:06:30] "GET / HTTP/1.1" 200 -
+10.64.129.89 - - [14/Jun/2025 00:07:56] "GET / HTTP/1.1" 200 -
+10.64.139.208 - - [14/Jun/2025 00:07:56] code 404, message File not found
+10.64.139.208 - - [14/Jun/2025 00:07:56] "GET /favicon.ico HTTP/1.1" 404 -
+10.64.135.240 - - [14/Jun/2025 00:08:00] "GET /advanced.html HTTP/1.1" 200 -
+10.64.129.89 - - [14/Jun/2025 00:08:00] "GET /fonts/Skiff-Sans-Display-380.woff2 HTTP/1.1" 200 -
+10.64.132.217 - - [14/Jun/2025 00:08:00] "GET /fonts/Skiff-Sans-Display-560.woff2 HTTP/1.1" 200 -
+10.64.131.45 - - [14/Jun/2025 00:08:00] "GET /fonts/Skiff-Sans-Display-470.woff2 HTTP/1.1" 200 -
+10.64.139.208 - - [14/Jun/2025 00:08:00] code 404, message File not found
+10.64.139.208 - - [14/Jun/2025 00:08:00] "GET /favicon.ico HTTP/1.1" 404 -
+10.64.129.89 - - [14/Jun/2025 00:09:30] "GET / HTTP/1.1" 200 -
