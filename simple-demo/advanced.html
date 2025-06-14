@@ -572,6 +572,51 @@
             background: #555;
         }
         
+        /* Calendar and Pages apps */
+        .simple-app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .simple-app h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .simple-app p {
+            font-size: 18px;
+            color: #999;
+            max-width: 600px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            max-width: 400px;
+        }
+        
+        .feature-list li {
+            padding: 8px 0;
+            color: #bbb;
+        }
+        
+        .feature-list li::before {
+            content: "✓ ";
+            color: #10b981;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
         /* Mobile Responsive Design */
         @media (max-width: 768px) {
             .app-switcher {
