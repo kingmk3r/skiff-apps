@@ -484,78 +484,8 @@
             // Track read status of emails
             const readEmails = new Set();
             
-            emailItems.forEach((item, index) => {
-                item.addEventListener('click', function() {
-                    console.log('Email item clicked:', index);
-                    
-                    // Remove active class from all items
-                    emailItems.forEach(i => i.classList.remove('active'));
-                    // Add active class to clicked item
-                    this.classList.add('active');
-                    
-                    // Get email content
-                    const fromElement = this.querySelector('.email-from');
-                    const subjectElement = this.querySelector('.email-subject');
-                    const previewElement = this.querySelector('.email-preview');
-                    
-                    if (!fromElement || !subjectElement || !previewElement) {
-                        console.error('Could not find email elements');
-                        return;
-                    }
-                    
-                    const from = fromElement.textContent.trim();
-                    const subject = subjectElement.textContent.trim();
-                    const preview = previewElement.textContent.trim();
-                    
-                    // Update email view
-                    const emailView = document.querySelector('.email-view');
-                    if (emailView) {
-                        emailView.innerHTML = `
-                            <div style="max-width: 800px; width: 100%; padding: 40px;">
-                                <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
-                                    <h2 style="color: #e5e5e5; margin-bottom: 8px; font-size: 24px;">${subject}</h2>
-                                    <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
-                                        <span>From: <strong style="color: #e5e5e5;">${from}</strong></span>
-                                        <span style="background: #10b981; color: white; font-size: 9px; padding: 2px 4px; border-radius: 4px;">🔐 E2E</span>
-                                        <span>Just now</span>
-                                    </div>
-                                </div>
-                                <div style="line-height: 1.6; color: #e5e5e5; font-size: 15px;">
-                                    <p>${preview}</p>
-                                    <br>
-                                    <p>This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.</p>
-                                    <br>
-                                    <p>The content is protected with military-grade ChaCha20-Poly1305 encryption, and even Skiff's servers cannot decrypt or access your messages.</p>
-                                    <br>
-                                    <p>Best regards,<br><strong>${from}</strong></p>
-                                </div>
-                                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
-                                    🔒 This message is secured with ChaCha20-Poly1305 encryption
-                                </div>
-                            </div>
-                        `;
-                    }
-                    
-                    // Remove unread status
-                    this.classList.remove('unread');
-                    const unreadDot = this.querySelector('.unread-dot');
-                    if (unreadDot) {
-                        unreadDot.remove();
-                    }
-                    
-                    // Update badge count
-                    const badge = document.querySelector('.nav-item.active .badge');
-                    if (badge) {
-                        const currentCount = parseInt(badge.textContent) || 0;
-                        const newCount = Math.max(0, currentCount - 1);
-                        if (newCount > 0) {
-                            badge.textContent = newCount;
-                        } else {
-                            badge.style.display = 'none';
-                        }
-                    }
-                });
-            });
+            // Initialize email interactions
+            attachEmailClickEvents();
             
             // Compose button functionality
             const composeBtn = document.querySelector('.compose-btn');
