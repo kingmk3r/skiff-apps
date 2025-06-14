@@ -538,8 +538,8 @@
                         // Add selection to clicked item
                         this.classList.add('selected');
                         
+                        const emailId = this.dataset.emailId;
                         const folder = this.dataset.folder;
-                        const emailIndex = this.dataset.index;
                         const fromElement = this.querySelector('.email-from');
                         const subjectElement = this.querySelector('.email-subject');
                         const previewElement = this.querySelector('.email-preview');
