@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skiff Demo Redirect</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0c0c0c;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+        }
+        h1 {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .demo-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .demo-link {
+            background: #6366f1;
+            color: white;
+            text-decoration: none;
+            padding: 15px 25px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+        .demo-link:hover {
+            background: #5855e6;
+            transform: translateY(-2px);
+        }
+        .info {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔒 Skiff Productivity Suite Demo</h1>
+        <p>Choose your demo experience:</p>
+        
+        <div class="demo-links">
+            <a href="./advanced.html" class="demo-link">
+                🚀 Advanced Demo - All Three Apps (Mail, Calendar, Pages)
+            </a>
+            <a href="./index.html" class="demo-link">
+                📧 Simple Demo - Mail Only
+            </a>
+            <a href="./hub.html" class="demo-link">
+                🏠 Demo Hub - Overview Page
+            </a>
+        </div>
+        
+        <div class="info">
+            <h3>🎯 What's Working:</h3>
+            <ul>
+                <li><strong>Mail App:</strong> Full email functionality with folders, search, compose</li>
+                <li><strong>Calendar App:</strong> Overview of encrypted calendar features</li>
+                <li><strong>Pages App:</strong> Overview of encrypted document editing</li>
+                <li><strong>Responsive:</strong> Works on desktop, tablet, and mobile</li>
+                <li><strong>Persistent State:</strong> Read emails stay read when switching folders</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h3>📱 Mobile Friendly:</h3>
+            <p>All demos are fully responsive and work perfectly on mobile devices with touch-optimized interfaces.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Auto-redirect to advanced demo after 3 seconds if no interaction
+        setTimeout(() => {
+            if (!document.hidden) {
+                window.location.href = './advanced.html';
+            }
+        }, 5000);
+        
+        // Cancel auto-redirect if user interacts
+        document.addEventListener('click', () => {
+            clearTimeout();
+        });
+    </script>
+</body>
+</html>
