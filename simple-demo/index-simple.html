@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skiff Mail - Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            background: #0c0c0c;
+            color: white;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .app {
+            display: flex;
+            height: 100vh;
+        }
+        
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .app {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #333;
+                overflow-x: auto;
+            }
+            
+            .nav {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 10px;
+                gap: 8px;
+            }
+            
+            .nav-item {
+                white-space: nowrap;
+                min-width: max-content;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 13px;
+            }
+            
+            .content {
+                flex-direction: column;
+                height: calc(100vh - 120px);
+            }
+            
+            .email-list {
+                width: 100%;
+                height: 50%;
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            
+            .email-view {
+                height: 50%;
+            }
+            
+            .header {
+                padding: 0 15px;
+                height: 50px;
+            }
+            
+            .search {
+                max-width: none;
+                flex: 1;
+                margin-right: 10px;
+            }
+            
+            .encryption-status {
+                display: none;
+            }
+            
+            .logo {
+                padding: 15px;
+                font-size: 20px;
+                text-align: center;
+            }
+        }
+        
+        /* Tablet Responsive Design */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .email-list {
+                width: 320px;
+            }
+            
+            .nav-item {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .logo {
+                padding: 15px;
+                font-size: 22px;
+            }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .sidebar {
+                padding: 0;
+            }
+            
+            .logo {
+                padding: 10px;
+                font-size: 18px;
+            }
+            
+            .nav {
+                padding: 8px;
+                gap: 6px;
+            }
+            
+            .nav-item {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .badge {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+            
+            .email-item {
+                padding: 12px;
+            }
+            
+            .email-from {
+                font-size: 13px;
+            }
+            
+            .email-subject {
+                font-size: 13px;
+            }
+            
+            .email-preview {
+                font-size: 11px;
+                -webkit-line-clamp: 1;
+            }
+            
+            .header {
+                height: 45px;
+                padding: 0 10px;
+            }
+            
+            .search {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+        }
+        
+        .sidebar {
+            width: 240px;
+            background: #1a1a1a;
+            border-right: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo {
+            padding: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            border-bottom: 1px solid #333;
+            color: #6366f1;
+        }
+        
+        .nav {
+            flex: 1;
+            padding: 20px 0;
+        }
+        
+        .nav-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .nav-item:hover {
+            background: #2a2a2a;
+        }
+        
+        .nav-item.active {
+            background: #6366f1;
+        }
+        
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .header {
+            height: 60px;
+            background: #1a1a1a;
+            border-bottom: 1px solid #333;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+        
+        .search {
+            flex: 1;
+            max-width: 400px;
+            padding: 8px 16px;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            color: white;
+            outline: none;
+        }
+        
+        .compose-btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+        }
+        
+        .email-list {
+            width: 400px;
+            background: #0c0c0c;
+            border-right: 1px solid #333;
+            overflow-y: auto;
+        }
+        
+        .email-item {
+            padding: 16px;
+            border-bottom: 1px solid #333;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .email-item:hover {
+            background: #1a1a1a;
+        }
+        
+        .email-item.unread {
+            background: #0f0f14;
+        }
+        
+        .email-from {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        
+        .email-subject {
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: #e5e5e5;
+        }
+        
+        .email-preview {
+            font-size: 12px;
+            color: #888;
+            line-height: 1.4;
+        }
+        
+        .email-time {
+            font-size: 11px;
+            color: #666;
+            float: right;
+        }
+        
+        .email-view {
+            flex: 1;
+            background: #0c0c0c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .empty-state {
+            text-align: center;
+            color: #666;
+        }
+        
+        .empty-state h3 {
+            margin-bottom: 8px;
+            color: #999;
+        }
+        
+        .badge {
+            background: #6366f1;
+            color: white;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 10px;
+            margin-left: 8px;
+        }
+        
+        .unread-dot {
+            width: 8px;
+            height: 8px;
+            background: #6366f1;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .encryption-badge {
+            background: #10b981;
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <div class="sidebar">
+            <div class="logo">🔒 Skiff Mail</div>
+            <nav class="nav">
+                <div class="nav-item active">
+                    <span>📧</span> Inbox <span class="badge">2</span>
+                </div>
+                <div class="nav-item">
+                    <span>📤</span> Sent
+                </div>
+                <div class="nav-item">
+                    <span>📝</span> Drafts <span class="badge">3</span>
+                </div>
+                <div class="nav-item">
+                    <span>🗂️</span> Archive
+                </div>
+                <div class="nav-item">
+                    <span>🗑️</span> Trash
+                </div>
+                <div class="nav-item">
+                    <span>⚠️</span> Spam
+                </div>
+                <div style="margin-top: 20px; padding: 0 20px; font-size: 12px; color: #666;">
+                    LABELS
+                </div>
+                <div class="nav-item">
+                    <span>🏷️</span> Work
+                </div>
+                <div class="nav-item">
+                    <span>🏷️</span> Personal
+                </div>
+                <div class="nav-item">
+                    <span>🏷️</span> Finance
+                </div>
+            </nav>
+        </div>
+        
+        <div class="main">
+            <div class="header">
+                <input type="text" class="search" placeholder="Search encrypted emails...">
+                <button class="compose-btn">✏️ Compose</button>
+                <div style="margin-left: auto; display: flex; align-items: center; gap: 16px;">
+                    <span style="font-size: 12px; color: #666;">End-to-end encrypted</span>
+                    <span style="color: #10b981;">🔐</span>
+                </div>
+            </div>
+            
+            <div class="content">
+                <div class="email-list">
+                    <div class="email-item unread">
+                        <div class="email-time">2:30 PM</div>
+                        <div class="email-from">
+                            <div class="unread-dot" style="display: inline-block;"></div>
+                            Sarah Johnson
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">Re: Project update and next steps</div>
+                        <div class="email-preview">Thanks for the update! I think we should schedule a meeting to discuss the timeline. The encryption is working perfectly...</div>
+                    </div>
+                    
+                    <div class="email-item unread">
+                        <div class="email-time">1:15 PM</div>
+                        <div class="email-from">
+                            <div class="unread-dot" style="display: inline-block;"></div>
+                            GitHub Notifications
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">[skiff-org/skiff-mail] New pull request</div>
+                        <div class="email-preview">A new pull request has been opened for review. The changes include improvements to the encryption system...</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-time">11:45 AM</div>
+                        <div class="email-from">
+                            Team Skiff
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">Welcome to Skiff Mail! 🎉</div>
+                        <div class="email-preview">Your private, encrypted email account is ready. All your communications are protected with end-to-end encryption...</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-time">10:30 AM</div>
+                        <div class="email-from">
+                            Security Alert
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">New device login detected</div>
+                        <div class="email-preview">We detected a login from a new device. If this was you, no action is needed. All data remains encrypted...</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-time">Yesterday</div>
+                        <div class="email-from">
+                            Alex Chen
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">Quarterly report attached</div>
+                        <div class="email-preview">Please find the encrypted quarterly report attached. All financial data is protected with zero-knowledge encryption...</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-time">Yesterday</div>
+                        <div class="email-from">
+                            Newsletter Digest
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">Your weekly privacy news</div>
+                        <div class="email-preview">This week in privacy: New legislation passed, encryption standards updated, and Skiff continues to lead...</div>
+                    </div>
+                    
+                    <div class="email-item">
+                        <div class="email-time">2 days ago</div>
+                        <div class="email-from">
+                            Maria Rodriguez
+                            <span class="encryption-badge">E2E</span>
+                        </div>
+                        <div class="email-subject">Calendar invite: Team standup</div>
+                        <div class="email-preview">You're invited to our weekly team standup. The meeting details are encrypted and only visible to invitees...</div>
+                    </div>
+                </div>
+                
+                <div class="email-view">
+                    <div class="empty-state">
+                        <h3>🔒 Select an encrypted email</h3>
+                        <p>Choose an email from the list to view its encrypted content.</p>
+                        <p style="margin-top: 16px; font-size: 12px;">
+                            All emails are protected with end-to-end encryption.<br>
+                            Only you can read your messages.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Wait for DOM to be ready
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, setting up interactions...');
+            
+            // Track read status of emails
+            const readEmails = new Set();
+            
+            emailItems.forEach((item, index) => {
+                item.addEventListener('click', function() {
+                    console.log('Email item clicked:', index);
+                    
+                    // Remove active class from all items
+                    emailItems.forEach(i => i.classList.remove('active'));
+                    // Add active class to clicked item
+                    this.classList.add('active');
+                    
+                    // Get email content
+                    const fromElement = this.querySelector('.email-from');
+                    const subjectElement = this.querySelector('.email-subject');
+                    const previewElement = this.querySelector('.email-preview');
+                    
+                    if (!fromElement || !subjectElement || !previewElement) {
+                        console.error('Could not find email elements');
+                        return;
+                    }
+                    
+                    const from = fromElement.textContent.trim();
+                    const subject = subjectElement.textContent.trim();
+                    const preview = previewElement.textContent.trim();
+                    
+                    // Update email view
+                    const emailView = document.querySelector('.email-view');
+                    if (emailView) {
+                        emailView.innerHTML = `
+                            <div style="max-width: 800px; width: 100%; padding: 40px;">
+                                <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
+                                    <h2 style="color: #e5e5e5; margin-bottom: 8px; font-size: 24px;">${subject}</h2>
+                                    <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
+                                        <span>From: <strong style="color: #e5e5e5;">${from}</strong></span>
+                                        <span style="background: #10b981; color: white; font-size: 9px; padding: 2px 4px; border-radius: 4px;">🔐 E2E</span>
+                                        <span>Just now</span>
+                                    </div>
+                                </div>
+                                <div style="line-height: 1.6; color: #e5e5e5; font-size: 15px;">
+                                    <p>${preview}</p>
+                                    <br>
+                                    <p>This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.</p>
+                                    <br>
+                                    <p>The content is protected with military-grade ChaCha20-Poly1305 encryption, and even Skiff's servers cannot decrypt or access your messages.</p>
+                                    <br>
+                                    <p>Best regards,<br><strong>${from}</strong></p>
+                                </div>
+                                <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
+                                    🔒 This message is secured with ChaCha20-Poly1305 encryption
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Remove unread status
+                    this.classList.remove('unread');
+                    const unreadDot = this.querySelector('.unread-dot');
+                    if (unreadDot) {
+                        unreadDot.remove();
+                    }
+                    
+                    // Update badge count
+                    const badge = document.querySelector('.nav-item.active .badge');
+                    if (badge) {
+                        const currentCount = parseInt(badge.textContent) || 0;
+                        const newCount = Math.max(0, currentCount - 1);
+                        if (newCount > 0) {
+                            badge.textContent = newCount;
+                        } else {
+                            badge.style.display = 'none';
+                        }
+                    }
+                });
+            });
+            
+            // Compose button functionality
+            const composeBtn = document.querySelector('.compose-btn');
+            if (composeBtn) {
+                composeBtn.addEventListener('click', function() {
+                    alert('🔒 Compose New Email\\n\\nFeatures:\\n• End-to-end encryption enabled by default\\n• Rich text editor with full formatting\\n• Secure attachment handling\\n• Scheduled sending options\\n• Email templates and signatures');
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search');
+            if (searchInput) {
+                searchInput.addEventListener('input', function(e) {
+                    const query = e.target.value.toLowerCase();
+                    emailItems.forEach(item => {
+                        const text = item.textContent.toLowerCase();
+                        item.style.display = text.includes(query) ? 'block' : 'none';
+                    });
+                });
+            }
+            
+            // Create different email sets for each folder
+            const folderEmails = {
+                'Inbox': [
+                    { id: 'inbox-1', from: 'Sarah Johnson', subject: 'Re: Project update and next steps', preview: 'Thanks for the update! I think we should schedule a meeting to discuss the timeline. The encryption is working perfectly...', unread: true },
+                    { id: 'inbox-2', from: 'GitHub Notifications', subject: '[skiff-org/skiff-mail] New pull request', preview: 'A new pull request has been opened for review. The changes include improvements to the encryption system...', unread: true },
+                    { id: 'inbox-3', from: 'Team Skiff', subject: 'Welcome to Skiff Mail! 🎉', preview: 'Your private, encrypted email account is ready. All your communications are protected with end-to-end encryption...', unread: false },
+                    { id: 'inbox-4', from: 'Security Alert', subject: 'New device login detected', preview: 'We detected a login from a new device. If this was you, no action is needed. All data remains encrypted...', unread: false },
+                    { id: 'inbox-5', from: 'Alex Chen', subject: 'Quarterly report attached', preview: 'Please find the encrypted quarterly report attached. All financial data is protected with zero-knowledge encryption...', unread: false }
+                ],
+                'Sent': [
+                    { id: 'sent-1', from: 'You', subject: 'Re: Weekly team sync', preview: 'Thanks for organizing the sync! The agenda looks comprehensive. I\'ll prepare the encryption metrics report...', unread: false },
+                    { id: 'sent-2', from: 'You', subject: 'Vacation request - December', preview: 'Hi team, I\'d like to request time off from December 20-30. All my projects will be up to date before I leave...', unread: false },
+                    { id: 'sent-3', from: 'You', subject: 'Re: Privacy policy updates', preview: 'The new privacy policy looks excellent. The zero-knowledge guarantees are clearly explained for users...', unread: false }
+                ],
+                'Drafts': [
+                    { id: 'draft-1', from: 'Draft', subject: 'Q4 Performance Review (Draft)', preview: 'This quarter has been exceptional for our privacy initiatives. Key achievements include implementing ChaCha20-Poly1305 encryption...', unread: false },
+                    { id: 'draft-2', from: 'Draft', subject: 'Feature request: Enhanced search', preview: 'I\'d like to propose some improvements to our encrypted search functionality. The current system works well...', unread: false },
+                    { id: 'draft-3', from: 'Draft', subject: 'Birthday party invitation', preview: 'You\'re invited to celebrate my birthday! Even our party invitations are encrypted 🎉...', unread: false }
+                ]
+            };
+
+            // Function to update badge count
+            function updateBadgeCount() {
+                const inboxEmails = folderEmails['Inbox'];
+                const unreadCount = inboxEmails.filter(email => email.unread && !readEmails.has(email.id)).length;
+                
+                const badge = document.querySelector('.nav-item.active .badge');
+                if (badge) {
+                    if (unreadCount > 0) {
+                        badge.textContent = unreadCount;
+                        badge.style.display = 'inline';
+                    } else {
+                        badge.style.display = 'none';
+                    }
+                }
+            }
+
+            // Function to render emails for a specific folder
+            function renderEmailsForFolder(folderName) {
+                const emailList = document.querySelector('.email-list');
+                const emailView = document.querySelector('.email-view');
+                
+                if (!emailList) return;
+                
+                const emails = folderEmails[folderName] || [];
+                
+                if (emails.length === 0) {
+                    // Show empty state for folders without demo emails
+                    emailList.innerHTML = `
+                        <div style="padding: 40px; text-align: center; color: #666;">
+                            <h3 style="margin-bottom: 12px; color: #999;">📁 ${folderName}</h3>
+                            <p>This folder is empty or not implemented in the demo.</p>
+                            <p style="margin-top: 12px; font-size: 12px;">Click "Inbox" to see demo emails.</p>
+                        </div>
+                    `;
+                } else {
+                    // Render emails for this folder
+                    emailList.innerHTML = emails.map((email, index) => {
+                        const isUnread = email.unread && !readEmails.has(email.id);
+                        return `
+                            <div class="email-item ${isUnread ? 'unread' : ''}" data-email-id="${email.id}" data-folder="${folderName}">
+                                <div class="email-meta">
+                                    <div style="display: flex; align-items: center;">
+                                        ${isUnread ? '<div class="unread-dot"></div>' : ''}
+                                        <span class="email-from">${email.from}</span>
+                                        <span class="encryption-badge">E2E</span>
+                                    </div>
+                                    <span class="email-time">2:30 PM</span>
+                                </div>
+                                <div class="email-subject">${email.subject}</div>
+                                <div class="email-preview">${email.preview}</div>
+                            </div>
+                        `;
+                    }).join('');
+                    
+                    // Re-attach click events to new email items
+                    attachEmailClickEvents();
+                }
+                
+                // Reset email view
+                if (emailView) {
+                    emailView.innerHTML = `
+                        <div class="empty-state">
+                            <h3>🔒 Select an encrypted email</h3>
+                            <p>Choose an email from the ${folderName} list to view its encrypted content.</p>
+                            <p style="margin-top: 16px; font-size: 12px;">
+                                All emails are protected with end-to-end encryption.<br>
+                                Only you can read your messages.
+                            </p>
+                        </div>
+                    `;
+                }
+            }
+
+            // Function to attach click events to email items
+            function attachEmailClickEvents() {
+                const emailItems = document.querySelectorAll('.email-item');
+                emailItems.forEach((item, index) => {
+                    item.addEventListener('click', function() {
+                        // Remove selection from all items
+                        emailItems.forEach(i => i.classList.remove('selected'));
+                        // Add selection to clicked item
+                        this.classList.add('selected');
+                        
+                        const emailId = this.dataset.emailId;
+                        const folder = this.dataset.folder;
+                        const fromElement = this.querySelector('.email-from');
+                        const subjectElement = this.querySelector('.email-subject');
+                        const previewElement = this.querySelector('.email-preview');
+                        
+                        if (!fromElement || !subjectElement || !previewElement) {
+                            console.error('Could not find email elements');
+                            return;
+                        }
+                        
+                        const from = fromElement.textContent.trim();
+                        const subject = subjectElement.textContent.trim();
+                        const preview = previewElement.textContent.trim();
+                        
+                        // Generate different content based on folder
+                        let fullContent = preview;
+                        if (folder === 'Sent') {
+                            fullContent = `${preview}
+
+This email was sent from your encrypted Skiff Mail account. The recipient received a fully encrypted message that only they can decrypt and read.
+
+Sent items are stored locally in encrypted format and synced securely across your devices.
+
+Best regards,
+Your Name
+
+---
+🔒 This sent message is secured with ChaCha20-Poly1305 encryption`;
+                        } else if (folder === 'Drafts') {
+                            fullContent = `${preview}
+
+[This is a draft message - not yet sent]
+
+You can continue editing this draft and send it when ready. All drafts are stored locally in encrypted format for your privacy.
+
+Draft saved automatically with end-to-end encryption.
+
+---
+🔒 This draft is secured with ChaCha20-Poly1305 encryption`;
+                        } else {
+                            fullContent = `${preview}
+
+This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.
+
+The content is protected with military-grade ChaCha20-Poly1305 encryption, and even Skiff's servers cannot decrypt or access your messages.
+
+Best regards,
+${from}
+
+---
+🔒 This message is secured with ChaCha20-Poly1305 encryption`;
+                        }
+                        
+                        // Update email view
+                        const emailView = document.querySelector('.email-view');
+                        if (emailView) {
+                            emailView.innerHTML = `
+                                <div style="max-width: 800px; width: 100%; padding: 40px;">
+                                    <div style="border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 20px;">
+                                        <h2 style="color: #e5e5e5; margin-bottom: 8px; font-size: 24px;">${subject}</h2>
+                                        <div style="display: flex; align-items: center; gap: 12px; font-size: 14px; color: #888;">
+                                            <span>${folder === 'Sent' ? 'To' : 'From'}: <strong style="color: #e5e5e5;">${from}</strong></span>
+                                            <span style="background: #10b981; color: white; font-size: 9px; padding: 2px 4px; border-radius: 4px;">🔐 E2E</span>
+                                            <span>Just now</span>
+                                        </div>
+                                    </div>
+                                    <div style="line-height: 1.6; color: #e5e5e5; font-size: 15px;">
+                                        ${fullContent.split('\n').map(line => line.trim() ? `<p>${line}</p>` : '<br>').join('')}
+                                    </div>
+                                </div>
+                            `;
+                        }
+                        
+                        // Mark email as read persistently
+                        if (emailId) {
+                            readEmails.add(emailId);
+                        }
+                        
+                        // Remove unread status
+                        this.classList.remove('unread');
+                        const unreadDot = this.querySelector('.unread-dot');
+                        if (unreadDot) {
+                            unreadDot.remove();
+                        }
+                        
+                        // Update badge count if we're in inbox
+                        if (folder === 'Inbox') {
+                            updateBadgeCount();
+                        }
+                    });
+                });
+            }
+
+            // Navigation item clicks
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(i => i.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Get folder name from the nav item text
+                    const fullText = this.textContent.trim();
+                    const folderName = fullText.includes('📧') ? 'Inbox' :
+                                     fullText.includes('📤') ? 'Sent' :
+                                     fullText.includes('📝') ? 'Drafts' :
+                                     fullText.includes('🗂️') ? 'Archive' :
+                                     fullText.includes('🗑️') ? 'Trash' :
+                                     fullText.includes('⚠️') ? 'Spam' :
+                                     fullText.split(' ')[1] || fullText.split(' ')[0];
+                    
+                    console.log('Switching to folder:', folderName);
+                    renderEmailsForFolder(folderName);
+                });
+            });
+
+            // Initialize with Inbox and correct badge count
+            renderEmailsForFolder('Inbox');
+            
+            console.log('All interactions set up successfully!');
+        });
+    </script>
+</body>
+</html>
