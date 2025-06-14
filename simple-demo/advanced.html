@@ -587,6 +587,307 @@
         .scrollbar-style::-webkit-scrollbar-thumb:hover {
             background: #555;
         }
+        
+        /* Mobile Responsive Design */
+        @media (max-width: 768px) {
+            .app-switcher {
+                position: fixed;
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                z-index: 1000;
+                justify-content: center;
+                padding: 6px;
+                border-radius: 8px;
+            }
+            
+            .app-switcher-btn {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .app-container {
+                padding-top: 60px;
+            }
+            
+            .mail-app {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #333;
+                overflow-x: auto;
+            }
+            
+            .nav {
+                display: flex;
+                flex-direction: row;
+                overflow-x: auto;
+                padding: 10px;
+                gap: 8px;
+            }
+            
+            .nav-item {
+                white-space: nowrap;
+                min-width: max-content;
+                padding: 8px 12px;
+                border-radius: 6px;
+                font-size: 13px;
+            }
+            
+            .compose-btn {
+                margin: 10px;
+                padding: 10px 14px;
+                font-size: 13px;
+            }
+            
+            .content {
+                flex-direction: column;
+                height: calc(100vh - 180px);
+            }
+            
+            .email-list {
+                width: 100%;
+                height: 50%;
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            
+            .email-view {
+                height: 50%;
+            }
+            
+            .header {
+                padding: 0 15px;
+                height: 50px;
+            }
+            
+            .search {
+                max-width: none;
+                flex: 1;
+                margin-right: 10px;
+            }
+            
+            .encryption-status {
+                display: none;
+            }
+            
+            .logo {
+                padding: 15px;
+                font-size: 18px;
+                text-align: center;
+            }
+            
+            /* Calendar Mobile */
+            .calendar-header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 20px;
+                gap: 15px;
+            }
+            
+            .calendar-title {
+                font-size: 22px;
+                text-align: center;
+            }
+            
+            .calendar-nav {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            
+            .calendar-nav-btn {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .calendar-main {
+                flex-direction: column;
+            }
+            
+            .calendar-sidebar {
+                width: 100%;
+                padding: 15px;
+                border-right: none;
+                border-bottom: 1px solid #333;
+            }
+            
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 1px;
+            }
+            
+            .calendar-day {
+                min-height: 80px;
+                padding: 8px;
+            }
+            
+            .calendar-event {
+                font-size: 10px;
+                padding: 2px 4px;
+            }
+            
+            /* Pages Mobile */
+            .pages-app {
+                flex-direction: column;
+            }
+            
+            .pages-sidebar {
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 1px solid #333;
+                overflow-x: auto;
+            }
+            
+            .pages-content {
+                padding: 20px 15px;
+            }
+            
+            .document {
+                padding: 20px;
+                margin: 0;
+            }
+            
+            .document h1 {
+                font-size: 26px;
+            }
+            
+            .document p {
+                font-size: 15px;
+            }
+        }
+        
+        /* Tablet Responsive Design */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .sidebar {
+                width: 200px;
+            }
+            
+            .email-list {
+                width: 320px;
+            }
+            
+            .nav-item {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+            
+            .logo {
+                padding: 15px;
+                font-size: 20px;
+            }
+            
+            .calendar-sidebar {
+                width: 240px;
+            }
+            
+            .pages-sidebar {
+                width: 220px;
+            }
+        }
+        
+        /* Small Mobile */
+        @media (max-width: 480px) {
+            .app-switcher {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                padding: 4px;
+            }
+            
+            .app-switcher-btn {
+                padding: 4px 8px;
+                font-size: 11px;
+            }
+            
+            .sidebar {
+                padding: 0;
+            }
+            
+            .logo {
+                padding: 10px;
+                font-size: 16px;
+            }
+            
+            .nav {
+                padding: 8px;
+                gap: 6px;
+            }
+            
+            .nav-item {
+                padding: 6px 10px;
+                font-size: 12px;
+            }
+            
+            .badge {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+            
+            .email-item {
+                padding: 12px;
+            }
+            
+            .email-from, .email-subject {
+                font-size: 13px;
+            }
+            
+            .email-preview {
+                font-size: 11px;
+                -webkit-line-clamp: 1;
+            }
+            
+            .header, .pages-header {
+                height: 45px;
+                padding: 0 10px;
+            }
+            
+            .search {
+                padding: 6px 12px;
+                font-size: 13px;
+            }
+            
+            .compose-btn {
+                margin: 8px;
+                padding: 8px 12px;
+                font-size: 12px;
+            }
+            
+            .calendar-title {
+                font-size: 18px;
+            }
+            
+            .calendar-day {
+                min-height: 60px;
+                padding: 4px;
+            }
+            
+            .calendar-day-number {
+                font-size: 12px;
+            }
+            
+            .calendar-event {
+                font-size: 9px;
+                padding: 1px 3px;
+            }
+            
+            .document {
+                padding: 15px;
+            }
+            
+            .document h1 {
+                font-size: 22px;
+            }
+            
+            .document p {
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
