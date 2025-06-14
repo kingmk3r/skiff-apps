@@ -10,3 +10,4 @@ Serving HTTP on 0.0.0.0 port 80 (http://0.0.0.0:80/) ...
 127.0.0.1 - - [14/Jun/2025 01:05:09] "GET /advanced.html HTTP/1.1" 200 -
 127.0.0.1 - - [14/Jun/2025 01:06:29] "GET /advanced.html HTTP/1.1" 200 -
 127.0.0.1 - - [14/Jun/2025 01:06:44] "GET /advanced.html HTTP/1.1" 200 -
+127.0.0.1 - - [14/Jun/2025 01:19:14] "GET /index.html HTTP/1.1" 200 -
