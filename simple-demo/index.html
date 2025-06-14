@@ -612,11 +612,21 @@ ${from}
                             `;
                         }
                         
+                        // Mark email as read persistently
+                        if (emailId) {
+                            readEmails.add(emailId);
+                        }
+                        
                         // Remove unread status
                         this.classList.remove('unread');
                         const unreadDot = this.querySelector('.unread-dot');
                         if (unreadDot) {
                             unreadDot.remove();
+                        }
+                        
+                        // Update badge count if we're in inbox
+                        if (folder === 'Inbox') {
+                            updateBadgeCount();
                         }
                     });
                 });
