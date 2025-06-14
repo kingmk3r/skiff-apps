@@ -1260,29 +1260,23 @@ P.S. The encryption performance metrics in section 3 are particularly impressive
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Advanced demo loading...');
             
-            // App switching functionality
-            window.switchApp = function(appName) {
-                console.log('Switching to app:', appName);
-                
-                // Hide all apps
-                document.querySelectorAll('.app-container').forEach(container => {
-                    container.classList.remove('active');
+            // App switching
+            document.querySelectorAll('.app-switcher-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const appName = this.dataset.app;
+                    console.log('Switching to app:', appName);
+                    
+                    // Update buttons
+                    document.querySelectorAll('.app-switcher-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update apps
+                    document.querySelectorAll('.app-container').forEach(container => {
+                        container.classList.remove('active');
+                    });
+                    document.getElementById(appName + '-app').classList.add('active');
                 });
-                
-                // Remove active class from all buttons
-                document.querySelectorAll('.app-switcher-btn').forEach(btn => {
-                    btn.classList.remove('active');
-                });
-                
-                // Show selected app
-                const targetApp = document.getElementById(appName + '-app');
-                if (targetApp) {
-                    targetApp.classList.add('active');
-                }
-                
-                // Set active button
-                event.target.classList.add('active');
-            };
+            });
 
             // Email functionality
             const emailItems = document.querySelectorAll('.email-item');
