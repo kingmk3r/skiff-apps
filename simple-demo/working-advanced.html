@@ -605,6 +605,7 @@
                 const emails = emailData[folder] || [];
                 
                 emailList.innerHTML = emails.map(email => {
+                    // Check if email is unread (original state AND not in readEmails set)
                     const isUnread = email.unread && !readEmails.has(email.id);
                     return `
                         <div class="email-item ${isUnread ? 'unread' : ''}" data-email-id="${email.id}">
@@ -629,6 +630,8 @@
                         const email = emails.find(e => e.id === emailId);
                         
                         if (email) {
+                            console.log('Clicked email:', emailId, 'Was read before:', readEmails.has(emailId));
+                            
                             // Update selection
                             document.querySelectorAll('.email-item').forEach(i => i.classList.remove('selected'));
                             this.classList.add('selected');
@@ -651,20 +654,32 @@
                                         <p>This email was sent using Skiff's zero-knowledge encryption. Your private keys never leave your device, ensuring that only you can read this message.</p>
                                         <br>
                                         <p>Best regards,<br><strong>${email.from}</strong></p>
+                                        <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #333; font-size: 12px; color: #666;">
+                                            🔒 This message is secured with ChaCha20-Poly1305 encryption
+                                        </div>
                                     </div>
                                 </div>
                             `;
                             
-                            // Mark as read
-                            if (email.unread) {
+                            // Mark as read ONLY if it was originally unread
+                            if (email.unread && !readEmails.has(emailId)) {
+                                console.log('Marking email as read:', emailId);
                                 readEmails.add(emailId);
                                 this.classList.remove('unread');
-                                this.querySelector('.unread-dot')?.remove();
-                                updateBadgeCount();
+                                const unreadDot = this.querySelector('.unread-dot');
+                                if (unreadDot) {
+                                    unreadDot.remove();
+                                }
+                                // Update badge count only for inbox
+                                if (folder === 'Inbox') {
+                                    updateBadgeCount();
+                                }
                             }
                         }
                     });
                 });
+                
+                console.log('Emails rendered. ReadEmails set:', Array.from(readEmails));
             }
 
             function updateBadgeCount() {
